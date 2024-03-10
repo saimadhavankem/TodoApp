@@ -7,9 +7,10 @@ li {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  margin-bottom: 13px;
   height: 30px;
   color: #ffffff;
+  width: 90%;
 }
 .icon {
   margin-left: 9px;

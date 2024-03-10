@@ -82,7 +82,7 @@ class Home extends Component {
             />
             <button type="submit">Add Todo</button>
           </form>
-          <div>
+          <ul>
             {todos.map((each) => (
               <Todo
                 key={each.id}
@@ -91,7 +91,7 @@ class Home extends Component {
                 onDelete={this.onDelete}
               />
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     );
