@@ -35,31 +35,35 @@ class Home extends Component {
     const wordList = text.split(" ");
     let num = wordList[wordList.length - 1];
 
-    if (typeof Number(num) === "number") {
-      length = Number(num);
-      if (length > 0) {
-        let data;
-        for (let i = 0; i < length; i++) {
-          data = {
-            id: uuidv4(),
-            title: text,
-            count: count,
-          };
-        }
-        this.setState({ todos: [...todos, data] });
-        length = 0;
-        this.setState({ text: "" });
-      }
-    }
     if (text !== "") {
       const data = {
         id: uuidv4(),
         title: text,
         count: count,
       };
-      this.setState({ todos: [...todos, data] });
+      this.setState((prev) => {
+        return { todos: [...prev.todos, data] };
+      });
       this.setState({ text: "" });
-      console.log(todos);
+    }
+    if (typeof Number(num) === "number") {
+      length = Number(num);
+      if (length > 0) {
+        let arr = [];
+        for (let i = 1; i < length; i++) {
+          const data = {
+            id: uuidv4(),
+            title: text,
+            count: count,
+          };
+          arr.push(data);
+        }
+        this.setState((prev) => {
+          return { todos: [...prev.todos, ...arr] };
+        });
+        length = 0;
+        this.setState({ text: "" });
+      }
     }
   };
 
